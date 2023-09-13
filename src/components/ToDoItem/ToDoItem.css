@@ -1,0 +1,7 @@
+.todo-item {
+  background-color: #9c4343;
+  padding: 1rem 2rem;
+  text-align: left;
+  margin: 1rem 0;
+  cursor: pointer;
+}
