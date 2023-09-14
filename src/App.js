@@ -16,13 +16,20 @@ const App = () => {
     });
   }
 
+  const deleteItemHandler = todoId => {
+    setTodo(prevTodo => {
+      const updatedTodo = prevTodo.filter(todo => todo.id !== todoId);
+      return updatedTodo;
+    });
+  }
+
   return (
     <div>
       <section className='todo-input-section'>
         <ToDoInput onAddTodo={addTodoHandler} />
       </section>
       <section className="todo-list-section">
-        <ToDoList items={todo} />
+        <ToDoList items={todo} onDeleteItem={deleteItemHandler} />
       </section>
     </div>
   );

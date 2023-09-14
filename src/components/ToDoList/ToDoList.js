@@ -8,6 +8,8 @@ const ToDoList = (props) => {
         <ToDoItem 
           key={todo.id}
           text={todo.text}
+          id={todo.id}
+          onDelete={props.onDeleteItem}
         />
       ))}
     </ul>
