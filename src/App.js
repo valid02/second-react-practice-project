@@ -23,13 +23,23 @@ const App = () => {
     });
   }
 
+  let content = (
+    <p style={{ textAlign: 'center' }} >No goals found.</p>
+  );
+
+  if (todo.length > 0) {
+    content = (
+      <ToDoList items={todo} onDeleteItem={deleteItemHandler} />
+    );
+  }
+
   return (
     <div>
       <section className='todo-input-section'>
         <ToDoInput onAddTodo={addTodoHandler} />
       </section>
       <section className="todo-list-section">
-        <ToDoList items={todo} onDeleteItem={deleteItemHandler} />
+        {content}
       </section>
     </div>
   );
