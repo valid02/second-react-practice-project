@@ -38,3 +38,12 @@
 .todo-input-btn:active {
   background-color: #946060;
 }
+
+.todo-input.invalid input {
+  border-color: red;
+  background: #d37979;
+}
+
+.todo-input.invalid label {
+  color: red;
+}
