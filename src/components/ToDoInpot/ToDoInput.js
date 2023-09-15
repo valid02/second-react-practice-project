@@ -9,11 +9,13 @@ const FormControl = styled.div`
     display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: ${props => (props.$invalid ? 'red' : 'black')};
   }
 
   & input {
     display: block;
-    border: 1px solid #afafaf;
+    border: 1px solid ${props => (props.$invalid ? 'red' : '#afafaf')};
+    background: ${props => (props.$invalid ? '#ffd7d7' : 'transparent')};
     width: 100%;
     padding: 0 0.25rem;
     font: inherit;
@@ -22,15 +24,6 @@ const FormControl = styled.div`
 
   & input:focus {
     outline: none;
-  }
-
-  &.invalid input {
-    border-color: red;
-    background: #d37979;
-  }
-
-  &.invalid label {
-    color: red;
   }
 `;
 
@@ -58,7 +51,7 @@ const ToDoInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl className={!isValid && 'invalid'}>
+      <FormControl $invalid={!isValid} >
         <label>To Do</label>
         <input
           type="text"
