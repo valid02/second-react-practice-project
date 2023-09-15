@@ -1,31 +1,5 @@
 import { useState } from 'react';
-import './ToDoInput.css';
-import styled from 'styled-components';
-
-const FormControl = styled.div`
-  margin: 0.5rem 0;
-
-  & label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: ${props => (props.$invalid ? 'red' : 'black')};
-  }
-
-  & input {
-    display: block;
-    border: 1px solid ${props => (props.$invalid ? 'red' : '#afafaf')};
-    background: ${props => (props.$invalid ? '#ffd7d7' : 'transparent')};
-    width: 100%;
-    padding: 0 0.25rem;
-    font: inherit;
-    line-height: 1.5rem;
-  }
-
-  & input:focus {
-    outline: none;
-  }
-`;
+import styles from './ToDoInput.module.css';
 
 const ToDoInput = props => {
   const [enteredValue, setEnteredValue] = useState('');
@@ -51,15 +25,15 @@ const ToDoInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl $invalid={!isValid} >
+      <div className={`${styles['todo-input']} ${!isValid ? styles.invalid : ''}`}>
         <label>To Do</label>
         <input
           type="text"
           value={enteredValue}
           onChange={todoInputChangeHandler} 
         />
-      </FormControl>
-      <button type='submit' className="todo-input-btn">Add Todo</button>
+      </div>
+      <button type='submit' className={ styles['todo-input-btn'] }>Add Todo</button>
     </form>
   );
 }
